@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Editor</title>
+  <style type="text/css" media="screen">
+    body {
+        overflow: hidden;
+    }
+
+    #editor {
+			position: relative !important;
+        border: 1px solid lightgray;
+        margin: auto;
+        height: 200px;
+        width: 50%;
+    }
+  </style>
+</head>
+<body>
+<h1>
+	Exam sample
+</h1>
+
+<p>
+	The first exercise goes here
+</p>
+<pre id="editor">function foo(items) {
+    var i;
+    for (i = 0; i &lt; items.length; i++) {
+        alert("Ace Rocks " + items[i]);
+    }
+}
+</pre>
+
+<input type="button" value="Execute me!" id="code-runner"></input>
+
+<script src="./ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+		editor.session.setMode("ace/mode/javascript");
+
+		document.getElementById("code-runner").addEventListener("click", function getEditorCode() {
+			console.log(editor.getValue());
+		});
+</script>
+
+</body>
+</html>
