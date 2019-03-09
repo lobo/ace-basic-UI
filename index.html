@@ -26,10 +26,13 @@
 
 	<!-- Editor 1 -->
 	<pre class="myeditor" id="editor1">
-public static void main(String[] args) {
-	final var palabra = "hello world!";
-
+public class Main {
+	public static void main(String[] args) {
+		final String palabra = "hello world!";
+			System.out.println(palabra);
+	}
 }
+			
 	</pre>
 	<input type="button" value="Execute me!" id="code-runner1"></input>
 
@@ -72,16 +75,17 @@ function foo(items) {
 
 		$(document).ready(function(){
 			const executionURL = 'http://10.2.70.187:8000/execution';
+			const param = {
+						"code": editor1.getValue(),
+						"args": []
+					};
 			$('#code-runner1').click(function(){
 				$.ajax({
 					url: executionURL,
 					dataType: 'json',
 					type: "POST",
-					contentType: 'application/json',
-					data: JSON.stringify({
-						"code": editor1.getValue(),
-						"args": []
-					}),
+					contentType: 'application/json;charset=utf-8',
+					data: JSON.stringify(param),
 					success: function(result) {
 						console.log(result);
 					},
@@ -91,6 +95,9 @@ function foo(items) {
 				})
 			})
 		});
+
+
+		
 
 
 
